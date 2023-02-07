@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe AI</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header><h1>Tic Tac Toe</h1></header>
+    <section id="game-options">
+        <div id="start">Start Game</div>
+        <div id="reset">Reset Game</div>
+    </section>
+    <section id="game-section">
+        <div id="game-board">
+            <div class="board-square">O</div>
+            <div class="board-square">X</div>
+            <div class="board-square">O</div>
+            <div class="board-square">O</div>
+            <div class="board-square">X</div>
+            <div class="board-square">O</div>
+            <div class="board-square">X</div>
+            <div class="board-square">X</div>
+            <div class="board-square">O</div>
+        </div>
+    </section>
+    <section id="game-play-info">
+        <div class="player-choices">
+            <div id="player-one-name" class="info-text">Player One's Name <input type="text" name="p-one-name" id="p-one-name"></div>
+            <div id="player-two-name" class="info-text">Player Two's Name <input type="text" name="p-two-name" id="p-two-name"></div>
+            <Div class="info-text" id="mode">
+                <p class="info-text">Choose Mode</p>
+                <div id="pvp-mode" class="info-text"><input type="radio" name="game-mode" id=""> Multiplayer Mode</div>
+                <div id="easy-mode" class="info-text"><input type="radio" name="game-mode" id=""> Easy Mode</div>
+                <div id="hard-mode" class="info-text"><input type="radio" name="game-mode" id=""> Difficult Mode</div>
+            </Div>
+            <div id="begin-section"><button id="begin">BEGIN</button></div>
+        </div>
+    </section>
+    <section id="results">
+        <div id="winner-div">
+            Blu Hu wins the game!!!
+        </div>
+    </section>
+    <script src="main.js"></script>
+</body>
+</html>

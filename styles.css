@@ -1,0 +1,161 @@
+*{
+    margin: 0px;
+    font-size: 10px;
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+}
+body{
+    background: url("pexels-lucie-liz-3165335.jpg");
+    object-fit: cover;
+}
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 5rem;
+}
+h1{
+    font-size: 5rem;
+}
+#game-board{
+    width: 450px;
+    height: 500px;
+    /*background-color: rgba(86, 95, 95, 0.671);*/
+    border-radius: 10px;
+    display: grid;
+    gap: 20px;
+    padding: 0px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    /*border: 1px solid rgb(192, 62, 224);
+    box-shadow: 1px 1px 9px 2px rgb(192, 62, 224);*/
+}
+#game-section{
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+.board-square{
+    border: 1px solid rgb(192, 62, 224);
+    border-radius: 15px;
+    box-shadow: 1px 1px 5px 3px rgb(192, 62, 224);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13rem;
+    font-style: italic;
+    color: rgb(192, 62, 224);
+    background-color: rgba(86, 95, 95, 0.671);
+}
+#game-play-info{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 2%;
+    display: none;
+}
+.info-text{
+    font-size: 4rem;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+.player-choices{
+    border: 4px solid rgb(192, 62, 224);
+    box-shadow: 1px 1px 20px 6px rgb(192, 62, 224);
+    border-radius: 20px;
+    padding: 50px;
+    background: rgba(128, 128, 128, 0.479);
+}
+input[type= "text"]{
+    font-size: 3rem;
+    height: 40px;
+    width: 500px;
+    border-radius: 10px;
+    border: 1px solid rgb(192, 62, 224);
+    background: rgba(128, 128, 128, 0.5);
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+input[type= "text"]:focus{
+    border: 2px solid rgb(23, 110, 145);
+    box-shadow: 1px 1px 6px 3px rgb(23, 110, 145);
+    outline: none;
+}
+input[type= "radio"]{
+    border: 0px;
+    width: 30px;
+    height: 3em;
+    
+}
+input[type= "radio"]:checked{
+    appearance: none;
+    background-color: rgb(192, 62, 224);
+    border-radius: 50%;
+    border: 3px solid rgb(255, 255, 255);
+
+}
+#game-options{
+    display: flex;
+    justify-content: center;
+}
+#game-options div{
+    color: rgb(66, 201, 189);
+    font-size: 3em;
+    font-weight: 600;
+    font-style: italic;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 10px;
+}
+#start:hover, #reset:hover, #begin:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
+    cursor: pointer;
+}
+#begin{
+    width: 200px;
+    height: 50px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    font-size: 3em;
+    font-style: italic;
+    color: rgb(232, 224, 235);
+    background: linear-gradient(rgb(121, 62, 136), rgb(192, 62, 224));
+}
+#begin-section{
+    display: flex;
+    justify-content: center;
+}
+#winner-div{
+    width: 500px;
+    height: 400px;
+    background: rgba(128, 128, 128, 0.5); 
+    border: 1px solid rgb(192, 62, 224);
+    box-shadow: 1px 1px 5px 3px rgb(192, 62, 224);
+    border-radius: 15px;
+    font-size: 5em;
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#results{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
