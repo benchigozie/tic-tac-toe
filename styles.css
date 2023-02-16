@@ -49,6 +49,7 @@ h1{
     font-style: italic;
     color: rgb(192, 62, 224);
     background-color: rgba(86, 95, 95, 0.671);
+    text-shadow: 0px 0px 5px rgb(238, 230, 230), 1px 1px 10px rgb(219, 209, 209), 1px 1px 20px rgb(181, 78, 190);
 }
 #game-play-info{
     position: fixed;

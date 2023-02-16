@@ -18,28 +18,30 @@
     </section>
     <section id="game-section">
         <div id="game-board">
-            <div class="board-square">O</div>
-            <div class="board-square">X</div>
-            <div class="board-square">O</div>
-            <div class="board-square">O</div>
-            <div class="board-square">X</div>
-            <div class="board-square">O</div>
-            <div class="board-square">X</div>
-            <div class="board-square">X</div>
-            <div class="board-square">O</div>
+            <div class="board-square" id="0">O</div>
+            <div class="board-square" id="1">X</div>
+            <div class="board-square" id="2">O</div>
+            <div class="board-square" id="3">O</div>
+            <div class="board-square" id="4">X</div>
+            <div class="board-square" id="5">O</div>
+            <div class="board-square" id="6">X</div>
+            <div class="board-square" id="7">X</div>
+            <div class="board-square" id="8">O</div>
         </div>
     </section>
     <section id="game-play-info">
         <div class="player-choices">
-            <div id="player-one-name" class="info-text">Player One's Name <input type="text" name="p-one-name" id="p-one-name"></div>
-            <div id="player-two-name" class="info-text">Player Two's Name <input type="text" name="p-two-name" id="p-two-name"></div>
+          <form id="game-form">
+            <div id="player-one-name" class="info-text">Player One's Name <input type="text" name="player-one-name" id="p-one-name" autocomplete="0ff"></div>
+            <div id="player-two-name" class="info-text">Player Two's Name <input type="text" name="player-two-name" id="p-two-name" autocomplete="off"></div>
             <Div class="info-text" id="mode">
                 <p class="info-text">Choose Mode</p>
-                <div id="pvp-mode" class="info-text"><input type="radio" name="game-mode" id=""> Multiplayer Mode</div>
-                <div id="easy-mode" class="info-text"><input type="radio" name="game-mode" id=""> Easy Mode</div>
-                <div id="hard-mode" class="info-text"><input type="radio" name="game-mode" id=""> Difficult Mode</div>
+                <div id="pvp-mode" class="info-text"><input type="radio" name="mode" id="" value="0"> Multiplayer Mode</div>
+                <div id="easy-mode" class="info-text"><input type="radio" name="mode" id="" value="1" checked> Easy Mode</div>
+                <div id="hard-mode" class="info-text"><input type="radio" name="mode" id="" value="2"> Difficult Mode</div>
             </Div>
-            <div id="begin-section"><button id="begin">BEGIN</button></div>
+            <div id="begin-section"><input type="submit" id="begin" value="BEGIN"></div>
+          </form>
         </div>
     </section>
     <section id="results">
