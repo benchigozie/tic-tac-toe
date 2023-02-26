@@ -91,6 +91,9 @@ input[type= "text"]:focus{
     box-shadow: 1px 1px 6px 3px rgb(23, 110, 145);
     outline: none;
 }
+input[type= "text"]::placeholder{
+    color: rgb(189, 201, 211);
+}
 input[type= "radio"]{
     border: 0px;
     width: 30px;
@@ -160,4 +163,15 @@ input[type= "radio"]:checked{
     align-items: center;
     justify-content: center;
     display: none;
+}
+#info-box{
+    font-size: 3em;
+    color: aliceblue;
+
+}
+#info-display{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
 }
