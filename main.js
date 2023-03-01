@@ -1,4 +1,4 @@
-    (function (){
+   (function (){
     let startButton = document.getElementById("start");
 
     startButton.addEventListener("click", function(){
@@ -31,6 +31,11 @@
                 
             let data = Object.fromEntries(formData);
 
+            if (data.mode == 1 || data.mode == 2){
+
+                data["player-two-name"] = "Computer";
+            };
+
             assignNames(data);
 
             loadGame(data);
@@ -55,7 +60,7 @@
         title.style.visibility = "visible";
         infoBox.style.visibility = "visible";
 
-        document.getElementById("start").textContent = "Restart Game";
+        document.getElementById("start").textContent = "New Game";
 
         })
 
@@ -72,6 +77,7 @@
                 resetGame(data);
                 initializeVariables(data);
 
+                data.mode = "";
             });
 
         })();
@@ -84,7 +90,7 @@
 
     function initializeVariables(data){
 
-        data.mode = +data.mode;
+        //data.mode = +data.mode;
         data.board = [0, 1, 2, 3, 4, 5, 6, 7, 8];
         data.playerOne = "X";
         data.playerTwo = "O";
@@ -93,23 +99,22 @@
         data.gameOver = false;
         data.winner = "";
         data.playing = data["player-one-name"];
-        data.pOneBackup = data["player-one-name"];
-        data.pTwoBackup = data["player-one-name"];
+        data.squares = document.querySelectorAll(".board-square");
 
     };
 
     function addEventListenersToGameBoard(data){
 
-        document.querySelectorAll(".board-square").forEach(box => {
+        data.squares.forEach(box => {
             
             box.addEventListener("click", (event) => {
-
                 playMove(event.target, data);
             });
 
         });
 
-        playersTurn(data);
+        
+            displayTurn(data);
     
     };
 
@@ -134,7 +139,21 @@
         square.textContent = data.currentPlayer;
         square.classList.add(data.currentPlayer === "X" ? "player1" : "player2");
 
-        displayTurn(data);
+        if (data.mode == 0){
+            changeTurn(data);
+        }
+        else if (data.mode == 1){
+
+            if (endConditions(data)){
+                data.gameOver =  true;
+                announceGameVerdict(data);
+                return;
+            }
+            changeTurn(data);
+
+            easyCompMove(data);
+
+        };
         resetGameVars(data);
 
     };
@@ -149,9 +168,9 @@
                 data.winner = data.playing;
 
                 (function (){
-                document.querySelectorAll(".board-square")[condition[0]].style.background = "rgba(48, 126, 150, 0.8)";
-                document.querySelectorAll(".board-square")[condition[1]].style.background = "rgba(48, 126, 150, 0.8)";
-                document.querySelectorAll(".board-square")[condition[2]].style.background = "rgba(48, 126, 150, 0.8)";
+                data.squares[condition[0]].style.background = "rgba(48, 126, 150, 0.8)";
+                data.squares[condition[1]].style.background = "rgba(48, 126, 150, 0.8)";
+                data.squares[condition[2]].style.background = "rgba(48, 126, 150, 0.8)";
                 })();
 
                 result = true;
@@ -198,7 +217,7 @@
 
     function resetGame (data){
         let ide = 0;
-        document.querySelectorAll(".board-square").forEach(box => {
+        data.squares.forEach(box => {
             
             box.textContent = "";
             box.style.background = "rgba(86, 95, 95, 0.671)";
@@ -214,7 +233,7 @@
 
     };
 
-    function playersTurn (data){
+    function displayTurn (data){
 
         data.infoBox = document.getElementById("info-box");
         data.infoBox.textContent = `${data.playing}'s Turn (${data.currentPlayer})`;
@@ -223,14 +242,13 @@
     function resetGameVars(data){
         let resetButton = document.getElementById("reset");
 
-        console.log(data["player-two-name"]);
         resetButton.addEventListener("click", function (){
-
+            //let dataBackUP = data.mode;
             assignNames(data);
             loadGame(data);
-            displayTurn(data);
+            //changeTurn(data);
             resetGame(data);
-            displayTurn(data);
+            //changeTurn(data);
 
         })
 
@@ -243,7 +261,7 @@
             data["player-two-name"] = "player 2";
         }    
     }
-    function displayTurn(data){
+    function changeTurn(data){
         if(endConditions(data)){
 
             data.gameOver = true;
@@ -253,14 +271,39 @@
         else if(data.currentPlayer === "X"){
             data.currentPlayer = "O";
             data.playing = data["player-two-name"];
-            playersTurn(data);
+            displayTurn(data);
         }
         else {
             data.currentPlayer = "X";
             data.playing = data["player-one-name"];
-            playersTurn(data);
+            displayTurn(data);
         }
     };
+    function easyCompMove (data){
+
+            let availableSpaces = data.board.filter(
+                (space) => space != "X" && space != "O"
+            );
+
+            let computerChoice = Math.floor(Math.random() * availableSpaces.length);
+
+            while (data.board[computerChoice] == "X" || data.board[computerChoice] == "O"){
+
+                computerChoice = availableSpaces[Math.floor(Math.random() * availableSpaces.length)];
+
+            };
+            
+            console.log(computerChoice);
+
+            //document.querySelectorAll(".board-square");
+            setTimeout(() => {
+                data.squares[computerChoice].textContent = data.currentPlayer;
+                data.board[computerChoice] = data.currentPlayer;
+                changeTurn(data);
+            
+            }, 300);      
+             
+    }
 
 
 
