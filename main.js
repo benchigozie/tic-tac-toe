@@ -14,6 +14,18 @@
     title.style.visibility = "hidden";
     infoBox.style.visibility = "hidden";
 
+    document.querySelector("#mode").addEventListener("click", () => {
+        if (document.querySelector("#easy").checked == true || document.querySelector("#hard").checked == true){
+            document.querySelector("#p-two-name").value = "Computer";
+            document.querySelector("#p-two-name").readOnly = true;
+        }
+        else{
+            document.querySelector("#p-two-name").readOnly = false;
+            document.querySelector("#p-two-name").placeholder = "Player 2...";
+            document.querySelector("#p-two-name").value = "";
+        };
+    })
+
     })
         
     startButton.classList.add("restart");
@@ -148,12 +160,24 @@
                 data.gameOver =  true;
                 announceGameVerdict(data);
                 return;
-            }
+            };
             changeTurn(data);
 
             easyCompMove(data);
 
-        };
+        }else {
+
+            if (endConditions(data)){
+                data.gameOver =  true;
+                announceGameVerdict(data);
+                return;
+            };
+            changeTurn(data);
+            hardAImove(data);
+
+            
+
+        }
         resetGameVars(data);
 
     };
@@ -196,6 +220,9 @@
 
     function endGame(data){
         
+     
+            data.gameOver = true;
+
         announceGameVerdict(data);
         
     };
@@ -293,18 +320,36 @@
 
             };
             
-            console.log(computerChoice);
 
             //document.querySelectorAll(".board-square");
-            setTimeout(() => {
-                data.squares[computerChoice].textContent = data.currentPlayer;
-                data.board[computerChoice] = data.currentPlayer;
-                changeTurn(data);
+            displayComputerMove(data, computerChoice);    
+
             
-            }, 300);      
              
     }
+    function displayComputerMove(data, computerChoice){
+        setTimeout(() => {
+            
+            data.squares[computerChoice].textContent = data.currentPlayer;
+            data.board[computerChoice] = data.currentPlayer;
+            changeTurn(data);
+        
+        }, 300);      
+    };
+    function hardAImove(data) {
 
+        /*let availableSpaces = data.board.filter(
+            (space) => space != "X" && space != "O"
+        );
+
+          console.log(bestComputerMove(data));
+
+        displayComputerMove(data);
+        
+    };
+    function bestComputerMove(data){
+*/
+    };
 
 
 
